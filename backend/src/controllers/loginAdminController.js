@@ -18,7 +18,7 @@ loginAdminController.login = async (req, res) => {
 
     //Si no existe el correo
     if (!adminFound) {
-      return res.status(400).json({ message: "Customer not found" });
+      return res.status(400).json({ message: "Admin not found" });
     }
 
     //Verificamos que la cuenta no esté bloqueada
@@ -59,7 +59,7 @@ loginAdminController.login = async (req, res) => {
       //#1- ¿que vamos a guardar?
       { id: adminFound._id, userType: "customer" },
       //#2- secret key
-      config.JWTsecret,
+      config.JWT.secret,
       //#3- Cuando expira
       { expiresIn: "30d" },
     );

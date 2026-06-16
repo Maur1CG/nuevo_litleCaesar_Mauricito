@@ -106,7 +106,6 @@ registerAdminController.verifyCode = async (req, res) => {
     const {
       randomCode: storedCode,
       name,
-      lastName,
       email,
       password,
       isVerified,
@@ -121,7 +120,6 @@ registerAdminController.verifyCode = async (req, res) => {
     //Si todo está bien, y el usuario, lo registramos en la DB
     const newAdmin = adminModel({
       name,
-      lastName,
       email,
       password,
       isVerified: true,

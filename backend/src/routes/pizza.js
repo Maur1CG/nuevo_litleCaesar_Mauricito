@@ -1,13 +1,15 @@
 import express from "express";
 import pizzasController from "../controllers/pizzaController.js";
+import { validateAuthCookie} from "../middlewares/authMiddleware.js";
 
 //Router() nos ayuda a colocar los métodos
 //que tendrá el endoint
 const router = express.Router()
 
+
 router.route("/")
-.get(pizzasController.getPizzas)
-.post(pizzasController.insertPizza)
+.get(validateAuthCookie(["customer", "admin"]), pizzasController.getPizzas)
+.post(validateAuthCookie(["admin"]), pizzasController.insertPizza)
 
 router.route("/low-stock")
 .get(pizzasController.getLowStock)

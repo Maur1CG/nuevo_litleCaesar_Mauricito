@@ -13,6 +13,7 @@ import providerRoutes from "./src/routes/provider.js";
 import cartRoutes from "./src/routes/cart.js"
 import wompiRoutes from "./src/routes/wompi.js"
 import deliveriesRoutes from "./src/routes/deliveries.js"
+import { validateAuthCookie } from "./src/middlewares/authMiddleware.js";
 
 //Creo una constante que es igual a
 //la libreria Express
@@ -29,7 +30,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/api/pizzas", pizzaRoutes);
 app.use("/api/branches", branchesRoutes);
-app.use("/api/employee", employeesRoutes);
+app.use("/api/employee", validateAuthCookie(["admin"]), employeesRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/registerCustomer", registerCustomerRoutes);
 app.use("/api/loginCustomers", loginCustomerRoutes);

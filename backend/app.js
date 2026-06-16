@@ -13,6 +13,9 @@ import providerRoutes from "./src/routes/provider.js";
 import cartRoutes from "./src/routes/cart.js"
 import wompiRoutes from "./src/routes/wompi.js"
 import deliveriesRoutes from "./src/routes/deliveries.js"
+import registerAdminRoutes from "./src/routes/registerAdmin.js"
+import adminRoutes from "./src/routes/admin.js"
+import loginAdminRoutes from "./src/routes/loginAdmin.js"
 import { validateAuthCookie } from "./src/middlewares/authMiddleware.js";
 
 //Creo una constante que es igual a
@@ -40,5 +43,8 @@ app.use("/api/providers", providerRoutes);
 app.use("/api/cart", cartRoutes)
 app.use("/api/wompi", wompiRoutes)
 app.use("/api/deliveries", deliveriesRoutes)
+app.use("/api/registerAdmin", registerAdminRoutes)
+app.use("/api/admin", adminRoutes)
+app.use("/api/loginAdmin", loginAdminRoutes)
 
 export default app;
